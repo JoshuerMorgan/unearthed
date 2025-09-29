@@ -2,6 +2,8 @@ import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import giftData from '../data/gifts.js'
+import GiftsController from '../controllers/gifts.js'
+
 
 
 const __filename = fileURLToPath(import.meta.url)
@@ -15,4 +17,6 @@ router.get('/', (req, res) => {
 router.get('/:giftId', (req, res) => {
   res.status(200).sendFile(path.resolve(__dirname, '../public/gift.html'))
 })
+router.get('/', GiftsController.getGifts)
+
 export default router
